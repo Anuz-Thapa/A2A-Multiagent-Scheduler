@@ -2,7 +2,7 @@
 
 A multi-agent orchestration demo that showcases how conversational agents can coordinate to schedule a meeting between participants with individual preferences and availability. Built on top of Google’s [A2A Protocol](https://ai.google.dev/docs/a2a_overview), this project includes local and remote agents using various agent frameworks, communicating seamlessly to achieve a goal.
 
-![A2A Time Scheduler](docs/images/demo_architecture.png)
+![A2A Time Scheduler](docs/images/a2a.png)
 
 ---
 
