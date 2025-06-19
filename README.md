@@ -49,8 +49,8 @@ Before you start, make sure you have the following installed:
 Create a `.env` file in the root of `a2a_friend_scheduling/`:
 
 ```env
-GOOGLE_API_KEY="your_api_key_here"
-
+GOOGLE_API_KEY="your_api_key_here" (optional if wanna use paid model)
+Else,just use free OLLAMA model.
 
 ### Terminal 1: Run Geoffrey Agent
 ```bash
