@@ -1,50 +1,76 @@
-# A2A Friend Scheduling Demo
-This document describes a multi-agent application demonstrating how to orchestrate conversations between different agents to schedule a meeting.
+# 🤝 A2A Time Scheduler
 
-This application contains four agents:
-*   **Host Agent**: The primary agent that orchestrates the scheduling task.
-*   **Kaitlynn Agent**: An agent representing Kaitlynn's calendar and preferences.
-*   **Nate Agent**: An agent representing Nate's calendar and preferences.
-*   **Karley Agent**: An agent representing Karley's calendar and preferences.
+A multi-agent orchestration demo that showcases how conversational agents can coordinate to schedule a meeting between participants with individual preferences and availability. Built on top of Google’s [A2A Protocol](https://ai.google.dev/docs/a2a_overview), this project includes local and remote agents using various agent frameworks, communicating seamlessly to achieve a goal.
 
-## Setup and Deployment
+![A2A Time Scheduler](docs/images/demo_architecture.png)
 
-### Prerequisites
+---
 
-Before running the application locally, ensure you have the following installed:
+## 🧠 Agents Involved
 
-1. **uv:** The Python package management tool used in this project. Follow the installation guide: [https://docs.astral.sh/uv/getting-started/installation/](https://docs.astral.sh/uv/getting-started/installation/)
-2. **python 3.13** Python 3.13 is required to run a2a-sdk 
-3. **set up .env** 
+This application runs **four agents**, each simulating a persona in a meeting scheduling task:
 
-Create a `.env` file in the root of the `a2a_friend_scheduling` directory with your Google API Key:
-```
-GOOGLE_API_KEY="your_api_key_here" 
-```
+- **🧑‍💼 Host Agent (ADK)**  
+  Orchestrates the conversation and initiates the scheduling process.
 
-## Run the Agents
+- **📅 Geoffrey Agent (LangGraph)**  
+  Represents Geoffrey’s calendar and preferences.
 
-You will need to run each agent in a separate terminal window. The first time you run these commands, `uv` will create a virtual environment and install all necessary dependencies before starting the agent.
+- **📅 Angela Agent (ADK)**  
+  Represents Angela’s calendar and preferences.
 
-### Terminal 1: Run Kaitlynn Agent
+- **📅 Andrew Agent (CrewAI)**  
+  Represents Andrew’s calendar and preferences.
+
+---
+
+## ⚙️ Features
+
+- ✅ Multi-agent communication using the **Agent-to-Agent Protocol (A2A)**.
+- 🔄 Local coordination between **heterogeneous agents** using different frameworks (LangGraph, ADK, CrewAI).
+- 💬 Asynchronous scheduling dialogues.
+- 🧪 Uses **local Ollama models** for LLM inference — no cloud LLMs required.
+- 📁 Modular and extensible design for adding new agents or skills.
+
+---
+
+## 🚀 Setup and Deployment
+
+### 🛠️ Prerequisites
+
+Before you start, make sure you have the following installed:
+
+1. [**uv**](https://docs.astral.sh/uv/getting-started/installation/) – Python package and virtualenv manager
+2. **Python 3.13+** – Required to run the `a2a-sdk`
+3. **Ollama (Optional)** – If using local LLMs (e.g., `llama3`, `mistral`)
+
+### 🔐 Environment Variables
+
+Create a `.env` file in the root of `a2a_friend_scheduling/`:
+
+```env
+GOOGLE_API_KEY="your_api_key_here"
+
+
+### Terminal 1: Run Geoffrey Agent
 ```bash
-cd kaitlynn_agent_langgraph
+cd Geoffrey_agent_langgraph
 uv venv
 source .venv/bin/activate
 uv run --active app/__main__.py
 ```
 
-### Terminal 2: Run Nate Agent
+### Terminal 2: Run Andrew Agent
 ```bash
-cd nate_agent_crewai
+cd Andrew_agent_crewai
 uv venv
 source .venv/bin/activate
 uv run --active .
 ```
 
-### Terminal 3: Run Karley Agent
+### Terminal 3: Run Angela Agent
 ```bash
-cd karley_agent_adk
+cd Angela_agent_adk
 uv venv
 source .venv/bin/activate
 uv run --active .
@@ -62,6 +88,4 @@ uv run --active adk web
 
 Once all agents are running, the host agent will begin the scheduling process. You can view the interaction in the terminal output of the `host_agent`.
 
-## References
-- https://github.com/google/a2a-python
-- https://codelabs.developers.google.com/intro-a2a-purchasing-concierge#1
+
